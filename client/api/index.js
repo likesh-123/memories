@@ -1,3 +1,5 @@
-// import axios from 'axios';
+import axios from 'axios';
 
-// const url = 
+const url = `${process.env.SERVER}/memories-api/user/posts`;
+
+export const fetchPosts = () => axios.get(url);

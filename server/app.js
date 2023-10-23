@@ -13,7 +13,7 @@ app.use(bodyparser.urlencoded({ limit: "30mb", extended: true }))
 app.use(cors());
 
 app.use((req, res, next) => {
-    console.log(`${req.method} https://${process.env.SERVER}${req.url}  \nQuery = ${JSON.stringify(req.query)}  \nParams = ${JSON.stringify(req.params)}`);
+    console.log(`${req.method} ${process.env.SERVER}${req.url}  \nQuery = ${JSON.stringify(req.query)}  \nParams = ${JSON.stringify(req.params)}`);
     next();
 });
 
