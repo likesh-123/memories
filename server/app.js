@@ -17,7 +17,8 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use('/', (req, res) => {
+app.get('/', (req, res) => {
+    console.log(`SERVER: ${process.env.SERVER}${process.env.PORT}${req.url}`);
     res.send("Working fine");
 })
 
