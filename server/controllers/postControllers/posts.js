@@ -21,7 +21,7 @@ const updatePost = async (req, res) => {
 
     const updatedPost = { creator, title, message, tags, selectedFile, _id: id };
 
-    await PostMessage.findByIdAndUpdate(id, updatedPost, { new: true });
+    await postMessageSchema.findByIdAndUpdate(id, updatedPost, { new: true });
 
     res.status(200).json(updatedPost);
 }
@@ -31,7 +31,7 @@ const deletePost = async (req, res) => {
 
     if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
 
-    await PostMessage.findByIdAndRemove(id);
+    await postMessageSchema.findByIdAndRemove(id);
 
     res.status(204).json({ message: "Post deleted successfully." });
 }
@@ -41,9 +41,9 @@ const likePost = async (req, res) => {
 
     if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
 
-    const post = await PostMessage.findById(id);
+    const post = await postMessageSchema.findById(id);
 
-    const updatedPost = await PostMessage.findByIdAndUpdate(id, { likeCount: post.likeCount + 1 }, { new: true });
+    const updatedPost = await postMessageSchema.findByIdAndUpdate(id, { likeCount: post.likeCount + 1 }, { new: true });
 
     res.status(200).json(updatedPost);
 }
