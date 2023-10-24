@@ -1,4 +1,4 @@
-const postMessageSchema = require('../../models/postMessage')
+const { postMessageSchema } = require('../../models/postMessage')
 
 const createPosts = async (req, res) => {
     const post = req.body;
